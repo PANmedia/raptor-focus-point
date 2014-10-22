@@ -1,0 +1,24 @@
+<!doctype html>
+<link href="../src/css/raptor-focus-point.css" rel="stylesheet" type="text/css" />
+<link href="https://code.jquery.com/ui/1.11.2/themes/black-tie/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script type="text/javascript" src="../src/js/raptor-focus-point.js"></script>
+<style type="text/css">
+    #images .thumb {
+        max-width: 100px;
+        max-height: 100px;
+    }
+</style>
+<div id="images">
+    <img class="thumb" src="images/jquery-raptor-og.png" data-src="images/raptor.png" />
+    <img class="thumb" src="images/mammoth-og.jpg" data-src="images/mammoth.png" />
+    <img class="thumb" src="images/saber-tooth.png" />
+</div>
+<script type="text/javascript">
+    $('.thumb').click(function() {
+        RaptorFocusPoint.open($(this).attr('src'), 0, 0, function(x, y) {
+            console.log(x, y);
+        });
+    });
+</script>

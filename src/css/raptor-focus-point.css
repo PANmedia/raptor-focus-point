@@ -1,0 +1,37 @@
+#raptor-focus-point-wrapper {
+    position: relative;
+    float: left;
+}
+
+#raptor-focus-point-wrapper img {
+    border: 1px dashed black;
+    outline: 1px dashed white;
+    display: block;
+    cursor: crosshair;
+}
+
+#raptor-focus-point-cross-hair-x {
+    border-left: 1px dashed black;
+    border-right: 1px dashed white;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 100%;
+}
+
+#raptor-focus-point-cross-hair-y {
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed white;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+}
+
+.raptor-focus-point-cross-hair {
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    pointer-events: none;
+}
