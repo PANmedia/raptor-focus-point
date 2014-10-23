@@ -2,9 +2,13 @@ var RaptorFocusPoint = (function($) {
     return {
         x: 0,
         y: 0,
+        callback: null,
         dragging: false,
         template: '<div id="raptor-focus-point-dialog" style="display: none"><div id="raptor-focus-point-wrapper"><img /><div id="raptor-focus-point-cross-hair-x" class="raptor-focus-point-cross-hair"></div><div id="raptor-focus-point-cross-hair-y" class="raptor-focus-point-cross-hair"></div></div></div>',
         open: function(imageSrc, x, y, callback) {
+            RaptorFocusPoint.x = x;
+            RaptorFocusPoint.y = y;
+            RaptorFocusPoint.callback = callback;
             var image = $('<img>').attr('src', imageSrc).hide();
             image.appendTo('body').load(function() {
                 if (!$('#raptor-focus-point-dialog').length) {
@@ -13,15 +17,13 @@ var RaptorFocusPoint = (function($) {
                         modal: true,
                         title: 'Set Focus Point',
                         open: function() {
-                            RaptorFocusPoint.updateCrossHair(x, y);
-                        },
-                        close: function() {
+                            RaptorFocusPoint.updateCrossHair(RaptorFocusPoint.x, RaptorFocusPoint.y);
                         },
                         buttons: [
                             {
                                 text: 'Confirm',
                                 click: function() {
-                                    callback(RaptorFocusPoint.x, RaptorFocusPoint.y)
+                                    RaptorFocusPoint.callback(RaptorFocusPoint.x, RaptorFocusPoint.y)
                                     $(this).dialog('close');
                                 }
                             },
